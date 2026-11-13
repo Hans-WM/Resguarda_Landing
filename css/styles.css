@@ -2,3 +2,82 @@
     display: flex;
     justify-content: center;
 }
+.btn_azul {
+  background-color: rgb(29, 78, 158);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.contenedor {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.cabecera {
+  background: white;
+  border-bottom: 1px solid #e5e9f2;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #152d7c;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  display: block;
+  padding: .65rem .8rem;
+  color: #152d7c;
+  text-decoration: none;
+}
+
+.menu .boton-borde {
+  background: white;
+  color: #1c54ec;
+  border: 2px solid #1c54ec;
+  border-radius: .45rem;
+  font-weight: bold;
+}
+
+.menu .boton-borde:hover {
+  background: #1c54ec;
+  color: white;
+}

@@ -81,3 +81,22 @@ body {
   background: #1c54ec;
   color: white;
 }
+
+.pie {
+  background: white;
+  border-top: 1px solid #e5e9f2;
+  padding: .5rem 0;
+}
+
+.pie .aviso {
+  font-size: .85rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+.pie .seguro {
+  font-size: .85rem;
+  font-weight: bold;
+  color: #15803d;
+  margin: 0;
+}

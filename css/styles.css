@@ -100,3 +100,97 @@ body {
   color: #15803d;
   margin: 0;
 }
+
+/* RESPONSIVE (sobre la estructura actual)*/
+
+img {
+  display: block;
+  width: 48px;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 4% 0;
+}
+
+/* El logo conserva su tamaño y posición */
+.marca img {
+  width: 42px;
+  margin: 0;
+}
+
+h1,
+p {
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+button {
+  display: block;
+  margin: 1rem 4%;
+}
+
+main {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+main h1,
+main p,
+main button {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Tablets */
+@media screen and (max-width: 900px) {
+  .menu {
+    gap: .25rem;
+  }
+
+  .menu a {
+    padding: .5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Celulares */
+@media screen and (max-width: 600px) {
+  .cabecera {
+    position: static;
+  }
+
+  .barra {
+    flex-direction: column;   
+    gap: .5rem;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu a {
+    font-size: .9rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    width: 92%;               
+    padding: 14px;
+  }
+
+  main button {
+    width: 100%;
+  }
+
+  .pie .barra {
+    text-align: center;      
+  }
+}

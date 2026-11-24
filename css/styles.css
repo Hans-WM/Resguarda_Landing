@@ -100,3 +100,142 @@ body {
   color: #15803d;
   margin: 0;
 }
+.imagen-principal {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+}
+
+.rojoB {
+  background-color: rgb(183,42,52);
+  color:white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 16px 24px;
+  border:none;
+  border-radius: 12px;
+  cursor:pointer;
+}
+.dato-tiempo {
+  display: flex;
+  align-items: center; /* centra icono y texto verticalmente */
+  gap: .6rem;          /* espacio entre icono y texto */
+}
+
+.dato-tiempo p {
+  margin: 0;           /* quita el margen del párrafo para que quede alineado */
+}
+
+body {
+  background: #f3f6fa;   /* Gris Niebla: fondo de la pantalla */
+  color: #1b2433;        /* Tinta: texto de cuerpo */
+}
+
+.panel-ruta {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border: 1px solid #e5e9f2;
+  border-radius: 1rem;
+}
+
+.panel-ruta h1,
+.paso h3 {
+  color: #0f2a55;        /* Azul Noche: títulos */
+}
+
+.panel-ruta .etiqueta {
+  color: #1d4e9e;        /* Azul confianza */
+}
+
+/* Cada tarjeta: grupo de la izquierda y tiempo a la derecha */
+.paso {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  background: #ffffff;
+  border: 1px solid #e5e9f2;
+  
+  border-radius: .7rem;
+}
+
+/* Número, icono y texto en fila */
+.paso-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.paso-info p,
+.paso-info h3 {
+  margin: 0;
+}
+
+.numero-paso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #0f2a55;   /* Azul Noche */
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.riesgo {
+  font-size: .75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #1d4e9e;
+}
+
+.descripcion {
+  color: #55617a;        /* Gris Apoyo: texto de apoyo */
+}
+
+.tiempo {
+  padding: .3rem .8rem;
+  border-radius: 2rem;
+  background: #f3f6fa;
+  color: #0f2a55;
+  font-size: .85rem;
+  font-weight: bold;
+}
+
+/* Aviso de abajo: icono al lado del texto */
+.aviso-info {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: 1rem;
+  border-radius: .7rem;
+  background: #f3f6fa;
+}
+
+.aviso-info p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .paso {
+    flex-wrap: wrap;
+    border: 1px solid #e5e9f2;
+  }
+}
+.lista-pasos {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f3f6fa;     
+  border: 1px solid #1d4e9e;
+  border-radius: 1rem;
+}
+
+
+.lista-pasos .paso:last-child {
+  margin-bottom: 0;
+}

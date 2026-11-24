@@ -118,17 +118,17 @@ body {
 }
 .dato-tiempo {
   display: flex;
-  align-items: center; /* centra icono y texto verticalmente */
-  gap: .6rem;          /* espacio entre icono y texto */
+  align-items: center; 
+  gap: .6rem;         
 }
 
 .dato-tiempo p {
-  margin: 0;           /* quita el margen del párrafo para que quede alineado */
+  margin: 0;           
 }
 
 body {
-  background: #f3f6fa;   /* Gris Niebla: fondo de la pantalla */
-  color: #1b2433;        /* Tinta: texto de cuerpo */
+  background: #f3f6fa;   
+  color: #1b2433;    
 }
 
 .panel-ruta {
@@ -142,14 +142,14 @@ body {
 
 .panel-ruta h1,
 .paso h3 {
-  color: #0f2a55;        /* Azul Noche: títulos */
+  color: #0f2a55;     
 }
 
 .panel-ruta .etiqueta {
-  color: #1d4e9e;        /* Azul confianza */
+  color: #1d4e9e;        
 }
 
-/* Cada tarjeta: grupo de la izquierda y tiempo a la derecha */
+
 .paso {
   display: flex;
   align-items: center;
@@ -163,7 +163,7 @@ body {
   border-radius: .7rem;
 }
 
-/* Número, icono y texto en fila */
+
 .paso-info {
   display: flex;
   align-items: center;
@@ -182,7 +182,7 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #0f2a55;   /* Azul Noche */
+  background: #0f2a55; 
   color: #ffffff;
   font-weight: bold;
 }
@@ -195,7 +195,7 @@ body {
 }
 
 .descripcion {
-  color: #55617a;        /* Gris Apoyo: texto de apoyo */
+  color: #55617a;       
 }
 
 .tiempo {
@@ -207,7 +207,7 @@ body {
   font-weight: bold;
 }
 
-/* Aviso de abajo: icono al lado del texto */
+
 .aviso-info {
   display: flex;
   align-items: center;

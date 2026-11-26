@@ -1,58 +1,174 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resguarda</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resguarda | Qué hacer si te roban o pierdes el celular</title>
+    <meta name="description" content="Guía paso a paso para bloquear tus tarjetas, proteger tu línea y hacer la denuncia si te roban o pierdes el celular. Sin registro y sin claves.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header class="cabecera">
         <div class="contenedor barra">
             <a class="marca" href="index.html">
-                <img src="assets/icons/icono1.png" width="42" height="42" />
+                <img src="assets/icons/icono1.png" alt="" width="42" height="42">
+                <span>Resguarda</span>
             </a>
 
             <nav aria-label="Navegación principal">
                 <ul class="menu">
-                    <li><a href="pages/informacion.html">Cómo funciona</a></li>
-                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#pasos">Cómo funciona</a></li>
+                    <li><a href="pages/informacion.html">Recursos</a></li>
                     <li><a href="#privacidad">Privacidad</a></li>
-                    <li><a class="boton-borde" href="#empezar">Empezar ahora</a></li>
+                    <li><a class="boton-borde" href="pages/emergencia.html">Empezar ahora</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <div class="deez_div">
-        </div>
-        <p>Actua rápido y con calma</p>
-            <br>
-            <h1>Perdiste o te robaron el celular</h1>
-            <br>
-            <p>Te guiamos paso a paso para bloquear tus tarjetas, proteger tu línea y hacer la denuncia. Sin instalar nada y sin pedirte claves</p>
-            <br>
-            <p>Toma aproximadamente 8 minutos</p>
-            <br>
-            <button>Como funciona</button>
-            <br>
-            <button>Recursos</button>
-            <br>
-            <button>Privacidad</button>
-            <br>
-            <button class="rojoB" onclick="emergencia()">Tengo una emergencia</button>
-            <div class="dato-tiempo">
-                <img src="assets/icons/reloj.png"  alt="" width="15" height="15">
-                <p>Toma aproximadamente 8 minutos</p>
+        <!-- Inicio -->
+        <section class="hero">
+            <div class="contenedor hero-grid">
+                <div class="hero-texto">
+                    <p class="hero-aviso">Actúa rápido y con calma</p>
+                    <h1>Perdiste o te robaron el celular</h1>
+                    <p class="hero-lead">Te guiamos paso a paso para bloquear tus tarjetas, proteger tu línea y hacer la denuncia. Sin instalar nada y sin pedirte claves.</p>
+
+                    <div class="hero-acciones">
+                        <a class="rojoB" href="pages/emergencia.html">Tengo una emergencia</a>
+                        <a class="enlace-flecha" href="#pasos">Ver cómo funciona</a>
+                    </div>
+
+                    <div class="dato-tiempo">
+                        <img src="assets/icons/reloj.png" alt="" width="18" height="18">
+                        <p>Toma aproximadamente 8 minutos</p>
+                    </div>
+                </div>
+
+                <img class="hero-imagen" src="assets/images/imagen2.jpg" alt="Manos sosteniendo un celular con un candado de seguridad sobre la pantalla" width="700" height="471">
             </div>
-            
+        </section>
+
+        <!-- Beneficios -->
+        <section class="beneficios" aria-label="Beneficios">
+            <ul class="contenedor beneficios-lista">
+                <li><img src="assets/icons/icono_persona.png" alt="" width="36" height="36"> Sin registro</li>
+                <li><img src="assets/icons/icono_escudo.png" alt="" width="36" height="36"> Sin contraseñas</li>
+                <li><img src="assets/icons/icon_cel.png" alt="" width="36" height="36"> Sin instalar nada</li>
+            </ul>
+        </section>
+
+        <!-- Los 3 pasos -->
+        <section class="seccion" id="pasos">
+            <div class="contenedor">
+                <h2>Recupera el control en tres pasos</h2>
+                <p class="seccion-lead">Los ordenamos según el riesgo: primero lo que puede costarte dinero.</p>
+
+                <ol class="pasos-grid">
+                    <li class="tarjeta-paso">
+                        <div class="tarjeta-cabecera">
+                            <span class="numero-paso">1</span>
+                            <img src="assets/icons/icon_mon.png" alt="" width="48" height="48">
+                        </div>
+                        <p class="riesgo-texto">Riesgo más alto</p>
+                        <h3>Tarjetas y billeteras</h3>
+                        <p class="descripcion">Bloquea tus bancos y billeteras digitales antes de que los usen.</p>
+                        <span class="tiempo">2 min</span>
+                    </li>
+                    <li class="tarjeta-paso">
+                        <div class="tarjeta-cabecera">
+                            <span class="numero-paso">2</span>
+                            <img src="assets/icons/icon_cel.png" alt="" width="48" height="48">
+                        </div>
+                        <p class="riesgo-texto">Riesgo alto</p>
+                        <h3>Línea y celular</h3>
+                        <p class="descripcion">Bloquea el chip y ubica el equipo con tu cuenta de Google o Apple.</p>
+                        <span class="tiempo">3 min</span>
+                    </li>
+                    <li class="tarjeta-paso">
+                        <div class="tarjeta-cabecera">
+                            <span class="numero-paso">3</span>
+                            <img src="assets/icons/icon_doc.png" alt="" width="48" height="48">
+                        </div>
+                        <p class="riesgo-texto">Paso final</p>
+                        <h3>Denuncia policial</h3>
+                        <p class="descripcion">Organiza tus datos y registra el número de tu denuncia.</p>
+                        <span class="tiempo">4 min</span>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Modo prestado -->
+        <section class="seccion seccion-gris" id="privacidad">
+            <div class="contenedor prestado-grid">
+                <img class="prestado-imagen" src="assets/images/imagen1.jpg" alt="Persona usando un celular frente a una laptop" width="600" height="400" loading="lazy">
+
+                <div>
+                    <h2>Úsala desde un celular prestado</h2>
+                    <p class="seccion-lead">Resguarda está pensada para que nadie pierda su privacidad al ayudarte.</p>
+                    <ul class="lista-check">
+                        <li>No se instala nada ni se crea una cuenta.</li>
+                        <li>No pide ni guarda contraseñas ni códigos.</li>
+                        <li>No accede a contactos, cámara ni ubicación.</li>
+                        <li>Al terminar, “Salir y borrar rastro” limpia todo.</li>
+                    </ul>
+                    <div class="aviso-info">
+                        <img src="assets/icons/icono_info.png" alt="" width="24" height="24">
+                        <p>Recuerda: nunca compartas claves, códigos SMS ni el CVV.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preguntas frecuentes -->
+        <section class="seccion" id="faq">
+            <div class="contenedor faq-contenedor">
+                <h2>Preguntas frecuentes</h2>
+                <div class="faq">
+                    <details>
+                        <summary>¿Me van a pedir mis claves?</summary>
+                        <p>No. Resguarda nunca te pide contraseñas, códigos SMS ni el CVV de tus tarjetas. Si alguien te los pide, no los des.</p>
+                    </details>
+                    <details>
+                        <summary>¿Resguarda bloquea mis tarjetas por mí?</summary>
+                        <p>No. Te guía y te deja a un toque el número de cada entidad, pero el bloqueo lo haces tú con tu banco u operador.</p>
+                    </details>
+                    <details>
+                        <summary>¿Qué pasa con mis datos cuando termino?</summary>
+                        <p>Solo se guardan mientras la pestaña está abierta. Al salir, todo se borra del equipo que usaste.</p>
+                    </details>
+                    <details>
+                        <summary>¿No recuerdo en qué bancos tengo tarjetas, qué hago?</summary>
+                        <p>Puedes seguir con los demás pasos y volver después. Resguarda te recomienda revisar tus movimientos cuando puedas.</p>
+                    </details>
+                    <details>
+                        <summary>¿Y si estoy en peligro?</summary>
+                        <p>Ponte a salvo primero. Para emergencias policiales llama al <a href="tel:105">105</a>.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cierre -->
+        <section class="cierre">
+            <div class="contenedor cierre-contenido">
+                <h2>No lo hagas solo ni a ciegas</h2>
+                <p>Empieza ahora y ten claro qué sigue en cada momento.</p>
+                <a class="boton-claro" href="pages/emergencia.html">Empezar ahora</a>
+            </div>
+        </section>
     </main>
-    <img class="imagen-principal" src="assets/images/imagen2.jpg" alt="Ilustración de Resguarda">
+
     <footer class="pie">
         <div class="contenedor barra">
             <a class="marca" href="index.html">
-            <img src="assets/icons/icono1.png" width="42" height="42" />
+                <img src="assets/icons/icono1.png" alt="" width="42" height="42">
+                <span>Resguarda</span>
             </a>
 
             <p class="aviso">Una guía de emergencia. Resguarda no reemplaza a bancos, operadores ni a la PNP.</p>

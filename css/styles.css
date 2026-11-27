@@ -250,7 +250,7 @@ body {
   margin-bottom: 0;
 }
 
-/* ===== Foco visible (teclado) ===== */
+
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
@@ -258,7 +258,7 @@ summary:focus-visible {
   outline-offset: 3px;
 }
 
-/* ===== Landing: general ===== */
+
 html { scroll-behavior: smooth; }
 section[id] { scroll-margin-top: 5rem; }
 
@@ -272,7 +272,7 @@ h2 { font-size: 1.5rem; margin: 0 0 .5rem; }
 
 .marca span { color: var(--azul-noche); }
 
-/* Botones de la landing (el rojo es solo para la acción de emergencia) */
+
 a.rojoB {
   display: inline-block;
   min-height: 44px;
@@ -318,7 +318,7 @@ a.rojoB:hover { background-color: #9a222b; }
   border: 1px solid #e5e9f2;
 }
 
-/* ===== Beneficios ===== */
+
 .beneficios { background: var(--blanco); border-bottom: 1px solid #e5e9f2; }
 
 .beneficios-lista {
@@ -339,7 +339,7 @@ a.rojoB:hover { background-color: #9a222b; }
   color: var(--azul-noche);
 }
 
-/* ===== Tres pasos ===== */
+
 .pasos-grid {
   list-style: none;
   margin: 0;
@@ -371,7 +371,7 @@ a.rojoB:hover { background-color: #9a222b; }
 .tarjeta-paso h3 { font-size: 1.25rem; margin: 0 0 .5rem; }
 .tarjeta-paso .descripcion { margin: 0 0 1rem; flex-grow: 1; }
 
-/* ===== Modo prestado ===== */
+
 .prestado-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -388,7 +388,7 @@ a.rojoB:hover { background-color: #9a222b; }
   padding: .35rem 0 .35rem 2rem;
 }
 
-/* Marca de verificación hecha con CSS (sin imagen extra) */
+
 .lista-check li::before {
   content: "";
   position: absolute;
@@ -403,7 +403,7 @@ a.rojoB:hover { background-color: #9a222b; }
 
 .seccion-gris .aviso-info { background: var(--blanco); border: 1px solid #e5e9f2; }
 
-/* ===== Preguntas frecuentes ===== */
+
 .faq-contenedor { max-width: 760px; }
 .faq-contenedor h2 { margin-bottom: 1.5rem; }
 
@@ -426,7 +426,7 @@ a.rojoB:hover { background-color: #9a222b; }
 .faq details p { margin: 0; padding: 0 1rem 1rem; color: var(--tinta); }
 .faq a { color: var(--azul-confianza); font-weight: 700; }
 
-/* ===== Cierre ===== */
+
 .cierre { background: var(--azul-noche); padding: 3.5rem 0; text-align: center; }
 .cierre h2 { color: var(--blanco); }
 .cierre p { color: var(--blanco); margin: 0 0 1.5rem; }
@@ -444,7 +444,7 @@ a.rojoB:hover { background-color: #9a222b; }
 .boton-claro:hover { background: var(--fondo-en-curso); }
 .cierre a:focus-visible { outline-color: var(--blanco); }
 
-/* ===== Tablet y celular ===== */
+
 @media (max-width: 800px) {
   .hero-grid,
   .prestado-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -457,7 +457,7 @@ a.rojoB:hover { background-color: #9a222b; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
-/* ===== Página emergencia ===== */
+
 .opciones {
   border: 0;
   padding: 0;

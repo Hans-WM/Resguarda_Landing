@@ -457,3 +457,60 @@ a.rojoB:hover { background-color: #9a222b; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+/* ===== Página emergencia ===== */
+.opciones {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.opciones legend {
+  padding: 0;
+  margin-bottom: .75rem;
+  color: var(--gris-apoyo);
+}
+
+.opcion {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: 1.25rem;
+  background: var(--blanco);
+  border: 1px solid #e5e9f2;
+  border-radius: .9rem;
+  cursor: pointer;
+}
+
+.opcion:hover { border-color: var(--azul-confianza); }
+
+.opcion input { align-self: flex-end; }
+
+.opcion input:focus-visible {
+  outline: 3px solid var(--azul-confianza);
+  outline-offset: 3px;
+}
+
+.opcion.seleccionada {
+  background: #f7faff;
+  border-color: var(--azul-confianza);
+}
+
+.opcion-titulo { font-weight: 700; color: var(--azul-noche); font-size: 1.1rem; }
+.opcion-texto { font-size: .9rem; color: var(--gris-apoyo); }
+
+.aviso-verde {
+  background: #e3f3e8;
+  border: 1px solid #b7dcc3;
+  color: var(--verde);
+  margin-bottom: 1.5rem;
+}
+
+.btn-ancho { width: 100%; }
+.btn_azul:hover { background-color: var(--azul-noche); }
+
+@media (max-width: 800px) {
+  .opciones { grid-template-columns: 1fr; }
+}

@@ -1,42 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resguarda | ¿Qué pasó con tu celular?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header class="cabecera">
         <div class="contenedor barra">
-            <a class="marca" onclick="volver()">
-                <img src="../assets/icons/icono1.png" alt="Resguarda" width="42" height="42" />
+            <a class="marca" href="../index.html">
+                <img src="../assets/icons/icono1.png" alt="" width="42" height="42">
+                <span>Resguarda</span>
             </a>
 
             <nav aria-label="Navegación principal">
                 <ul class="menu">
-                    <li><a href="#como_funciona">Cómo funciona</a></li>
-                    <li><a href="#recursos">Recursos</a></li>
-                    <li><a href="#privacidad">Privacidad</a></li>
-                    <li><a class="boton-borde" href="#empezar">Empezar ahora</a></li>
+                    <li><a href="../index.html#pasos">Cómo funciona</a></li>
+                    <li><a href="informacion.html">Recursos</a></li>
+                    <li><a href="../index.html#privacidad">Privacidad</a></li>
+                    <li><a class="boton-borde" href="emergencia.html">Empezar ahora</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <button onclick="planificacion()">Lo perdi</button>
-    <button onclick="planificacion()">Me lo robaron</button>
-    <button class="btn_azul">Ver mi plan de emergencia</button>
+
+    <main class="seccion">
+        <div class="contenedor hero-grid">
+
+            <form class="panel-ruta" id="form-emergencia">
+                <p class="riesgo-texto">Empecemos por lo esencial</p>
+                <h1>¿Qué pasó con tu celular?</h1>
+                <p class="descripcion">Esto nos ayuda a ordenar tu plan. No pediremos acceso al equipo ni a tus cuentas.</p>
+
+                <fieldset class="opciones">
+                    <legend>Elige una opción</legend>
+
+                    <label class="opcion">
+                        <input type="radio" name="situacion" value="robo" checked>
+                        <img src="../assets/icons/icono_info.png" alt="" width="28" height="28">
+                        <span class="opcion-titulo">Me lo robaron</span>
+                        <span class="opcion-texto">Priorizaré tarjetas, línea y ubicación segura.</span>
+                    </label>
+
+                    <label class="opcion">
+                        <input type="radio" name="situacion" value="perdida">
+                        <img src="../assets/icons/icono_lupa.png" alt="" width="28" height="28">
+                        <span class="opcion-titulo">Lo perdí</span>
+                        <span class="opcion-texto">Te ayudaré a buscarlo y proteger tus accesos.</span>
+                    </label>
+                </fieldset>
+
+                <div class="aviso-info aviso-verde">
+                    <img src="../assets/icons/icono_escudo.png" alt="" width="24" height="24">
+                    <div>
+                        <p><strong>Antes de continuar: ¿estás en un lugar seguro?</strong></p>
+                        <p>Si estás en peligro, busca un lugar concurrido y llama al <a href="tel:105">105</a>.</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn_azul btn-ancho">Ver mi plan de emergencia</button>
+            </form>
+
+            <img class="hero-imagen" src="../assets/images/imagen5.jpg"
+                 alt="Describe qué se ve en la imagen" width="600" height="700">
+
+        </div>
+    </main>
+
     <footer class="pie">
         <div class="contenedor barra">
-            <a class="marca" href="index.html">
-            <img src="../assets/icons/icono1.png" alt="" width="42" height="42" />
+            <a class="marca" href="../index.html">
+                <img src="../assets/icons/icono1.png" alt="" width="42" height="42">
+                <span>Resguarda</span>
             </a>
-
             <p class="aviso">Una guía de emergencia. Resguarda no reemplaza a bancos, operadores ni a la PNP.</p>
-
             <p class="seguro">Conexión cifrada</p>
         </div>
     </footer>
-<script src="../js/main.js"></script>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/emergencia.js"></script>
 </body>
 </html>

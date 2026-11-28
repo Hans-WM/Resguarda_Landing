@@ -1,59 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resguarda | Centro de ayuda</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header class="cabecera">
         <div class="contenedor barra">
-            <a class="marca" onclick="volver()">
-                <img src="../assets/icons/icono1.png" alt="Resguarda" width="42" height="42" />
+            <a class="marca" href="../index.html">
+                <img src="../assets/icons/icono1.png" alt="" width="42" height="42">
+                <span>Resguarda</span>
             </a>
-<button id="boton-menu" class="hamburguesa" type="button"
-                aria-controls="navegacion" aria-expanded="false">
-            <span class="lineas" aria-hidden="true"><span></span><span></span><span></span></span>
-            Menú
+            <button id="boton-menu" class="hamburguesa" type="button"
+                    aria-controls="navegacion" aria-expanded="false">
+                <span class="lineas" aria-hidden="true"><span></span><span></span><span></span></span>
+                Menú
             </button>
             <nav id="navegacion" class="navegacion" aria-label="Navegación principal">
                 <ul class="menu">
-                    <li ><a href="#como-funciona">Cómo funciona</a></li>
-                    <li><a href="#recursos">Recursos</a></li>
-                    <li><a href="#privacidad">Privacidad</a></li>
-                    <li><a class="boton-borde" href="#empezar">Empezar ahora</a></li>
+                    <li><a href="../index.html#pasos">Cómo funciona</a></li>
+                    <li><a href="informacion.html">Recursos</a></li>
+                    <li><a href="../index.html#privacidad">Privacidad</a></li>
+                    <li><a class="boton-borde" href="emergencia.html">Empezar ahora</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <p>CENTRO DE AYUDA</p>
-    <h1>Informacion clara para actuar</h1>
-    <p>Guias breves y canales oficiales. Nunca te pediremos constraseño o un codigo</p>
-    <img src="../assets/icons/icono_lupa.png" alt="Resguarda" width="42" height="42" />
-    <p>Encontrar mi IMEI</p>
-    <p>Enecuentra numeros verificados de bancos, operadores y canales de la Policia Nacional</p>
-    <img src="../assets/icons/icono_telefono.png" alt="Resguarda" width="42" height="42" />
-    <p>Directorio oficial</p>
-    <p>Revisalo en la caja del equipo, la boleta de compra o la cuenta de GOOgle o Apple vicnulada</p>
-    <img src="../assets/icons/icono_escudo.png" alt="Resguarda" width="42" height="42" />
-    <p>Estoy prestando mi celular</p>
-    <p>Resguarda no instala nada, no accede a tus contactos y borra la sesion al terminar</p>
-    <img src="../assets/icons/icono_persona.png" alt="Resguarda" width="42" height="42" />
-    <p>Soy contacto de confianza</p>
-    <p>Aprende que puedes hacer por la afectada sin pedirle claves ni codigos</p>
-    <img class="imagen-principal" src="../assets/images/imagen1.jpg" alt="Ilustración de Resguarda">
+
+    <main class="seccion seccion-gris">
+        <div class="contenedor">
+            <section class="panel-ruta panel-ancho">
+                <p class="riesgo-texto">Centro de ayuda</p>
+                <h1>Información clara para actuar</h1>
+                <p class="descripcion">Guías breves y canales oficiales. Nunca te pediremos una contraseña ni un código.</p>
+
+                <!-- Cada guía se abre con details y summary ("Ver guía") -->
+                <div class="ayuda">
+                    <details class="ayuda-tarjeta">
+                        <summary>
+                            <img src="../assets/icons/icono_lupa.png" alt="" width="42" height="42">
+                            <strong>Encontrar mi IMEI</strong>
+                            <span>Ver guía</span>
+                        </summary>
+                        <p>Revísalo en la caja del equipo, en la boleta de compra o en la cuenta de Google o Apple vinculada. Si no lo tienes, tu operador puede dártelo con tu número de línea y tu DNI.</p>
+                    </details>
+
+                    <details class="ayuda-tarjeta">
+                        <summary>
+                            <img src="../assets/icons/icono_telefono.png" alt="" width="42" height="42">
+                            <strong>Directorio oficial</strong>
+                            <span>Ver guía</span>
+                        </summary>
+                        <p>Encuentra números verificados de bancos, operadores y canales de la Policía Nacional. Usa solo los publicados en la web oficial de cada entidad o en el reverso de tu tarjeta.</p>
+                    </details>
+
+                    <details class="ayuda-tarjeta">
+                        <summary>
+                            <img src="../assets/icons/icono_escudo.png" alt="" width="42" height="42">
+                            <strong>Estoy prestando mi celular</strong>
+                            <span>Ver guía</span>
+                        </summary>
+                        <p>Resguarda no instala nada, no accede a tus contactos y borra la sesión al terminar. Cuando la persona termine, revisa que haya pulsado “Salir y borrar rastro”.</p>
+                    </details>
+
+                    <details class="ayuda-tarjeta">
+                        <summary>
+                            <img src="../assets/icons/icono_persona.png" alt="" width="42" height="42">
+                            <strong>Soy contacto de confianza</strong>
+                            <span>Ver guía</span>
+                        </summary>
+                        <p>Aprende qué puedes hacer por la persona afectada sin pedirle claves ni códigos: ayúdala a llamar a los canales oficiales y a ordenar los datos de la denuncia.</p>
+                    </details>
+                </div>
+            </section>
+
+            <section class="panel-ruta panel-ancho">
+                <p class="riesgo-texto">Directorio rápido</p>
+                <h2>Canales de emergencia</h2>
+                <div class="acciones">
+                    <a class="rojoB" href="tel:105">Policía Nacional 105</a>
+                    <a class="btn-borde" href="tel:116">Bomberos 116</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
     <footer class="pie">
         <div class="contenedor barra">
-            <a class="marca" href="index.html">
-            <img src="../assets/icons/icono1.png" alt="" width="42" height="42" />
+            <a class="marca" href="../index.html">
+                <img src="../assets/icons/icono1.png" alt="" width="42" height="42">
+                <span>Resguarda</span>
             </a>
-
-            <p class="aviso">Una guía de emergencia. Resguarda no reemplaza a bancos, operadores ni a la PNP.</p>
-
+            <p class="aviso">Resguarda orienta; no reemplaza a las entidades oficiales ni guarda tus credenciales.</p>
             <p class="seguro">Conexión cifrada</p>
         </div>
     </footer>
-<script src="../js/main.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

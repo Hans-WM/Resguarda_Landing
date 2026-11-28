@@ -1,85 +1,320 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resguarda | Tu plan de emergencia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
+    <!-- HU-021: modo prestado; HU-023: salir y borrar rastro siempre visible -->
+    <div class="barra-prestado">
+        <p><strong>Modo prestado activo</strong> · No guardamos información en este equipo</p>
+        <button class="btn-texto-claro" type="button" onclick="abrirSalir()">Salir y borrar rastro</button>
+    </div>
+
     <header class="cabecera">
         <div class="contenedor barra">
-            <a class="marca" onclick="volver()">
-                <img src="../assets/icons/icono1.png" alt="Resguarda" width="42" height="42" />
+            <a class="marca" href="../index.html">
+                <img src="../assets/icons/icono1.png" alt="" width="42" height="42">
+                <span>Resguarda</span>
             </a>
-<button id="boton-menu" class="hamburguesa" type="button"
-                aria-controls="navegacion" aria-expanded="false">
-            <span class="lineas" aria-hidden="true"><span></span><span></span><span></span></span>
-            Menú
+            <!-- HU-025: tiempo restante -->
+            <span class="etiqueta-tiempo" id="tiempo">~8 min restantes</span>
+            <button id="boton-menu" class="hamburguesa" type="button"
+                    aria-controls="navegacion" aria-expanded="false">
+                <span class="lineas" aria-hidden="true"><span></span><span></span><span></span></span>
+                Menú
             </button>
             <nav id="navegacion" class="navegacion" aria-label="Navegación principal">
                 <ul class="menu">
-                    <li><a href="#como-funciona">Cómo funciona</a></li>
-                    <li><a href="#recursos">Recursos</a></li>
-                    <li><a href="#privacidad">Privacidad</a></li>
-                    <li><a class="boton-borde" href="#empezar">Empezar ahora</a></li>
+                    <!-- HU-035: indicador de conexión cifrada -->
+                    <li><span class="etiqueta-segura">Conexión cifrada</span></li>
+                    <li><a href="informacion.html" target="_blank">Ayuda</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <main class="panel-ruta"> 
-    
-        <article class="paso">
-            <div class="paso-info">
-                <span class="numero-paso">1</span>
-                <img src="../assets/icons/icon_mon.png" alt="" width="40" height="40">
-                <div>
-                    <p class="riesgo">Riesgo más alto</p>
-                    <h3>Tarjetas y billeteras</h3>
-                    <p class="descripcion">Bloquea bancos y billeteras</p>
-                </div>
-            </div>
-            <span class="tiempo">2 min</span>
-        </article>
 
-        <article class="paso">
-            <div class="paso-info">
-                <span class="numero-paso">2</span>
-                <img src="../assets/icons/icon_cel.png" alt="" width="40" height="40">
-                <div>
-                    <p class="riesgo">Riesgo alto</p>
-                    <h3>Línea y celular</h3>
-                    <p class="descripcion">Bloquea el chip y ubica el equipo</p>
-                </div>
-            </div>
-            <span class="tiempo">3 min</span>
-        </article>
+    <!-- HU-023: confirmación antes de borrar -->
+    <div class="modal oculto" id="modal-salir">
+        <section class="modal-caja" aria-labelledby="titulo-salir">
+            <h2 id="titulo-salir">¿Terminar y borrar la sesión?</h2>
+            <p class="descripcion">Se eliminarán el progreso y los datos ingresados en este dispositivo.</p>
+            <button class="rojoB btn-ancho" type="button" onclick="borrarTodo()">Sí, borrar todo</button>
+            <button class="btn-borde btn-ancho" type="button" onclick="cerrarSalir()">Seguir usando</button>
+        </section>
+    </div>
 
-        <article class="paso">
-            <div class="paso-info">
-                <span class="numero-paso">3</span>
-                <img src="../assets/icons/icon_doc.png" alt="" width="40" height="40">
-                <div>
-                    <p class="riesgo">Paso final</p>
-                    <h3>Denuncia policial</h3>
-                    <p class="descripcion">Organiza y registra la información</p>
-                </div>
+    <main class="contenedor plan-grid" id="flujo">
+
+        <!-- HU-001: panel lateral con el progreso del plan -->
+        <aside class="lateral">
+            <h2 class="lateral-titulo">Tu plan de emergencia</h2>
+            <div class="progreso"><div class="progreso-barra" id="barra-progreso"></div></div>
+            <p class="nota" id="texto-progreso">0 de 3 pasos completados</p>
+
+            <ul class="lista-estados">
+                <li><button type="button" onclick="abrirPaso(1)"><small>Paso 1</small> Tarjetas</button> <span class="estado pendiente" id="estado-paso-1">Pendiente</span></li>
+                <li><button type="button" onclick="abrirPaso(2)"><small>Paso 2</small> Línea móvil</button> <span class="estado pendiente" id="estado-paso-2">Pendiente</span></li>
+                <li><button type="button" onclick="abrirPaso(3)"><small>Paso 3</small> Denuncia</button> <span class="estado pendiente" id="estado-paso-3">Pendiente</span></li>
+            </ul>
+
+            <button class="btn-borde btn-ancho" type="button" onclick="verConstancias()">Mis constancias</button>
+
+            <div class="aviso-info">
+                <img src="../assets/icons/icono_info.png" alt="" width="24" height="24">
+                <p><strong>Recuerda:</strong> nunca compartas claves, códigos SMS ni el CVV de tus tarjetas.</p>
             </div>
-            <span class="tiempo">4 min</span>
-        </article>
-        
-        </main>
+        </aside>
+
+        <div>
+            <!--Ruta de acción-->
+            <section class="panel-ruta vista" id="vista-plan">
+                <p class="riesgo-texto">Tu ruta de acción</p>
+                <h1>Vamos a protegerte en este orden</h1>
+                <p class="descripcion">Empieza por el mayor riesgo. Puedes volver a este plan en cualquier momento.</p>
+
+                <!-- Solo aparece si eligió "Lo perdí" (HU-010) -->
+                <div class="aviso-info aviso-ambar oculto" id="bloque-perdida">
+                    <p><strong>Antes de bloquear, búscalo.</strong> Llama a tu número desde este celular y revisa si alguien lo encontró. Si no aparece, sigue con el plan: en el paso 2 puedes ubicarlo con Google o Apple.</p>
+                </div>
+
+                <button class="paso paso-boton" type="button" onclick="abrirPaso(1)">
+                    <span class="paso-info">
+                        <span class="numero-paso">1</span>
+                        <img src="../assets/icons/icon_mon.png" alt="" width="40" height="40">
+                        <span>
+                            <span class="riesgo">Riesgo más alto</span>
+                            <strong class="paso-titulo">Tarjetas y billeteras</strong>
+                            <span class="descripcion">Bloquea bancos y billeteras</span>
+                        </span>
+                    </span>
+                    <span class="tiempo">2 min</span>
+                </button>
+
+                <button class="paso paso-boton" type="button" onclick="abrirPaso(2)">
+                    <span class="paso-info">
+                        <span class="numero-paso">2</span>
+                        <img src="../assets/icons/icon_cel.png" alt="" width="40" height="40">
+                        <span>
+                            <span class="riesgo">Riesgo alto</span>
+                            <strong class="paso-titulo">Línea y celular</strong>
+                            <span class="descripcion">Bloquea el chip y ubica el equipo</span>
+                        </span>
+                    </span>
+                    <span class="tiempo">3 min</span>
+                </button>
+
+                <button class="paso paso-boton" type="button" onclick="abrirPaso(3)">
+                    <span class="paso-info">
+                        <span class="numero-paso">3</span>
+                        <img src="../assets/icons/icon_doc.png" alt="" width="40" height="40">
+                        <span>
+                            <span class="riesgo">Paso final</span>
+                            <strong class="paso-titulo">Denuncia policial</strong>
+                            <span class="descripcion">Organiza y registra la información</span>
+                        </span>
+                    </span>
+                    <span class="tiempo">4 min</span>
+                </button>
+
+                <div class="aviso-info">
+                    <img src="../assets/icons/icono_info.png" alt="" width="24" height="24">
+                    <p><strong>No necesitas recordar todas tus claves.</strong> Te llevamos a los canales oficiales y te decimos qué información tener a mano.</p>
+                </div>
+
+                <a class="enlace-flecha" href="emergencia.html">Cambiar lo que pasó</a>
+            </section>
+
+            <!-- PASO7-->
+            <section class="panel-ruta vista oculto" id="vista-paso1">
+                <p class="riesgo-texto">Paso 1 de 3 · Riesgo más alto</p>
+                <h1>Bloquea tus tarjetas y billeteras</h1>
+                <p class="descripcion">Llama solo a las entidades que usas. Nunca compartas claves, códigos SMS ni CVV.</p>
+
+                <p class="contador" id="contador-entidades">0 de 3 entidades resueltas</p>
+
+                <!-- La lista se dibuja con JavaScript -->
+                <ul class="entidades" id="lista-entidades"></ul>
+
+                <details class="detalle">
+                    <summary>¿Usas otra entidad? Añádela aquí</summary>
+                    <form class="formulario" id="form-entidad" autocomplete="off">
+                        <label for="nueva-nombre">Nombre de la entidad</label>
+                        <input class="campo" type="text" id="nueva-nombre" autocomplete="off" placeholder="Ej. BBVA">
+                        <label for="nueva-telefono">Teléfono oficial</label>
+                        <input class="campo" type="tel" id="nueva-telefono" autocomplete="off" placeholder="Ej. 01 595 0000">
+                        <p class="mensaje-error oculto" id="error-entidad">Escribe el nombre y el teléfono.</p>
+                        <button class="btn-borde" type="submit">Añadir entidad</button>
+                    </form>
+                </details>
+
+                <label class="campo-titulo" for="codigo-bancos">Número de reporte que te dio el banco (opcional)</label>
+                <input class="campo" type="text" id="codigo-bancos" autocomplete="off" placeholder="Ej. 12345678">
+                <p class="nota">No escribas contraseñas ni códigos de verificación.</p>
+
+                <div class="acciones">
+                    <button class="btn-texto" type="button" onclick="mostrarVista('vista-plan')">Volver al plan</button>
+                    <button class="btn_azul" type="button" onclick="terminarPaso(1)">Guardar y continuar</button>
+                </div>
+            </section>
+
+            <!--  PASO 2  -->
+            <section class="panel-ruta vista oculto" id="vista-paso2">
+                <p class="riesgo-texto">Paso 2 de 3 · Riesgo alto</p>
+                <h1>Protege tu línea y tu equipo</h1>
+                <p class="descripcion">Bloquea el chip para que nadie reciba tus mensajes o códigos de verificación.</p>
+
+                <label class="campo-titulo" for="operador">¿Cuál es tu operador?</label>
+                <p class="nota">Lo usamos solo para mostrarte el número oficial.</p>
+                <select class="campo" id="operador">
+                    <option value="claro">Claro</option>
+                    <option value="movistar">Movistar</option>
+                    <option value="entel">Entel</option>
+                    <option value="bitel">Bitel</option>
+                </select>
+
+                <div class="canal" id="canal-operador">
+                    <p class="nota">Canal oficial de <span id="nombre-operador">Claro</span></p>
+                    <p class="canal-numero" id="numero-operador">0800 00123</p>
+                    <p>Pide el bloqueo de la línea y del equipo por IMEI. No dictes códigos SMS.</p>
+                    <div class="acciones">
+                        <a class="rojoB" id="llamar-operador" href="tel:080000123">Llamar ahora</a>
+                        <button class="btn-borde" type="button" id="boton-linea" onclick="marcarLinea()">Ya bloqueé mi línea</button>
+                    </div>
+                    <p class="mensaje-ok oculto" id="linea-ok">Línea bloqueada. Puedes deshacerlo con el mismo botón.</p>
+                </div>
+
+                <label class="campo-titulo" for="codigo-linea">Código de reporte del operador (opcional)</label>
+                <input class="campo" type="text" id="codigo-linea" autocomplete="off" placeholder="Ej. 2026-998877">
+
+                <div class="aviso-info aviso-ambar">
+                    <p><strong>No vayas solo a recuperar el equipo.</strong> Si puedes ubicarlo, comparte la información con la policía. Borrarlo de forma remota puede impedir que sigas rastreándolo.</p>
+                </div>
+
+                <!-- Los servicios de Google y Apple usan la sesión abierta del navegador -->
+                <div class="aviso-info aviso-ambar">
+                    <p><strong>Usa tu propia cuenta.</strong> Abre el enlace en una ventana de incógnito e inicia sesión con tu cuenta de Google o Apple, no con la del dueño de este celular. Al terminar, cierra la sesión.</p>
+                </div>
+
+                <div class="dos-enlaces">
+                    <a class="enlace-caja" href="https://www.google.com/android/find" target="_blank" rel="noopener">
+                        <strong>Encontrar mi Android</strong>
+                        <span>Servicio oficial de Google</span>
+                    </a>
+                    <a class="enlace-caja" href="https://www.icloud.com/find" target="_blank" rel="noopener">
+                        <strong>Buscar mi iPhone</strong>
+                        <span>Servicio oficial de Apple</span>
+                    </a>
+                </div>
+
+                <div class="acciones">
+                    <button class="btn-texto" type="button" onclick="mostrarVista('vista-plan')">Volver al plan</button>
+                    <button class="btn_azul" type="button" id="boton-fin-paso2" onclick="terminarPaso(2)">Continuar por ahora</button>
+                </div>
+            </section>
+
+            <!-- PASO 3 · -->
+            <section class="panel-ruta vista oculto" id="vista-paso3">
+                <p class="riesgo-texto">Paso 3 de 3 · Paso final</p>
+                <h1>Deja constancia de lo ocurrido</h1>
+                <p class="descripcion">Reúne la información y usa el canal oficial de la Policía Nacional del Perú.</p>
+
+                <div class="denuncia-grid">
+                    <form class="formulario datos-denuncia" id="form-denuncia" autocomplete="off">
+                        <h2 class="subtitulo-form">Datos listos para tu denuncia</h2>
+                        <p class="nota">Completa los datos que recuerdes. El IMEI es útil, pero no obligatorio.</p>
+
+                        <label for="den-fecha">Fecha y hora</label>
+                        <input class="campo" type="text" id="den-fecha" autocomplete="off">
+
+                        <label for="den-lugar">Lugar del incidente</label>
+                        <input class="campo" type="text" id="den-lugar" autocomplete="off" placeholder="Distrito y referencia">
+
+                        <label for="den-equipo">Datos del equipo</label>
+                        <input class="campo" type="text" id="den-equipo" autocomplete="off" placeholder="Modelo e IMEI (si lo recuerdas)">
+                    </form>
+
+                    <div class="tarjeta-oscura">
+                        <img src="../assets/icons/icon_doc.png" alt="" width="40" height="40">
+                        <h2>Denuncia policial digital</h2>
+                        <p>Abre el portal oficial de la PNP. No ingreses datos en enlaces recibidos por mensajes.</p>
+                        <a class="btn-claro" href="https://www.policia.gob.pe" target="_blank" rel="noopener">Ir al portal oficial</a>
+                        <p class="nota-clara">Si hubo violencia o lesiones, llama al <a href="tel:105">105</a> o acude a una comisaría.</p>
+                    </div>
+                </div>
+
+                <label class="campo-titulo" for="numero-denuncia">Número de denuncia o constancia (opcional)</label>
+                <p class="nota">No ingreses contraseñas ni códigos de verificación.</p>
+                <input class="campo" type="text" id="numero-denuncia" autocomplete="off" placeholder="Ej. 2026-001234">
+
+                <div class="acciones">
+                    <button class="btn-texto" type="button" onclick="mostrarVista('vista-plan')">Volver al plan</button>
+                    <button class="btn_azul" type="button" onclick="terminarPaso(3)">Finalizar mi plan</button>
+                </div>
+            </section>
+
+            <!--  Mis constancias -->
+            <section class="panel-ruta vista oculto" id="vista-constancias">
+                <p class="riesgo-texto">Tu respaldo</p>
+                <h1>Mis constancias</h1>
+                <p class="descripcion">Aquí reunimos lo que hiciste y lo que falta. No guardamos claves ni datos bancarios.</p>
+
+                <p class="mensaje-error oculto" id="aviso-pendientes">Aún tienes acciones pendientes. Complétalas cuanto antes.</p>
+
+                <ul class="constancias" id="lista-constancias"></ul>
+
+                <div class="aviso-info aviso-azul">
+                    <div>
+                        <p><strong>Envíalas a tu correo.</strong> Es más seguro que descargar archivos en un celular prestado.</p>
+                        <form class="formulario formulario-fila" id="form-correo" autocomplete="off">
+                            <label class="oculto-lector" for="correo">Tu correo</label>
+                            <input class="campo" type="email" id="correo" autocomplete="off" placeholder="tucorreo@ejemplo.com" required>
+                            <button class="btn-borde" type="submit">Preparar envío</button>
+                        </form>
+                        <p class="mensaje-ok oculto" id="ok-correo">Listo. Tus constancias quedaron preparadas para enviarse a ese correo.</p>
+                    </div>
+                </div>
+
+                <div class="acciones">
+                    <button class="btn-texto" type="button" onclick="mostrarVista('vista-plan')">Volver al plan</button>
+                    <button class="btn-borde" type="button" onclick="abrirSalir()">Terminar y borrar rastro</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Pantalla final  -->
+    <main class="contenedor oculto" id="vista-final">
+        <section class="panel-ruta final">
+            <img src="../assets/icons/icono_escudo.png" alt="" width="47" height="47">
+            <p class="riesgo-texto">Sesión finalizada</p>
+            <h1>Este celular quedó limpio</h1>
+            <ul class="lista-check">
+                <li>Datos de los formularios eliminados</li>
+                <li>Progreso eliminado</li>
+                <li>Sin archivos descargados</li>
+            </ul>
+            <p class="descripcion">Gracias por prestar tu celular y ayudar.</p>
+            <a class="btn_azul" href="../index.html">Volver al inicio</a>
+        </section>
+    </main>
+
     <footer class="pie">
         <div class="contenedor barra">
-            <a class="marca" href="index.html">
-            <img src="../assets/icons/icono1.png" alt="" width="42" height="42" />
+            <a class="marca" href="../index.html">
+                <img src="../assets/icons/icono1.png" alt="" width="42" height="42">
+                <span>Resguarda</span>
             </a>
-
-            <p class="aviso">Una guía de emergencia. Resguarda no reemplaza a bancos, operadores ni a la PNP.</p>
-
+            <p class="aviso">Resguarda orienta; no reemplaza a las entidades oficiales ni guarda tus credenciales.</p>
             <p class="seguro">Conexión cifrada</p>
         </div>
     </footer>
-<script src="../js/main.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/plan.js"></script>
 </body>
 </html>

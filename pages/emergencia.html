@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resguarda | ¿Qué pasó con tu celular?</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
+    <!-- HU-021: aviso de modo prestado en todas las pantallas del recorrido -->
+    <div class="barra-prestado">
+        <p><strong>Modo prestado activo</strong> · No guardamos información en este equipo</p>
+    </div>
+
+    <!-- HU-020: aviso de privacidad antes de empezar -->
+    <div class="modal" id="modal-aviso">
+        <section class="modal-caja" aria-labelledby="titulo-aviso">
+            <img src="../assets/icons/icono_escudo.png" alt="" width="47" height="47">
+            <p class="riesgo-texto">Antes de empezar</p>
+            <h2 id="titulo-aviso">Este celular quedará limpio</h2>
+            <p class="descripcion">No instalamos nada, no pedimos contraseñas y borraremos los datos de esta sesión al terminar.</p>
+            <details class="detalle">
+                <summary>Ver más detalles</summary>
+                <ul>
+                    <li>No accedemos a contactos, cámara ni ubicación.</li>
+                    <li>El autocompletado está desactivado.</li>
+                    <li>Puedes salir y borrar el rastro en cualquier momento.</li>
+                </ul>
+            </details>
+            <button class="btn_azul btn-ancho" type="button" id="boton-continuar">Continuar de forma segura</button>
+            <a class="enlace-flecha" href="../index.html">Salir</a>
+            <p class="nota">Recomendamos usar una ventana privada o de incógnito.</p>
+        </section>
+    </div>
+
     <header class="cabecera">
         <div class="contenedor barra">
             <a class="marca" href="../index.html">
@@ -32,7 +59,7 @@
     <main class="seccion">
         <div class="contenedor hero-grid">
 
-            <form class="panel-ruta" id="form-emergencia">
+            <form class="panel-ruta" id="form-emergencia" autocomplete="off">
                 <p class="riesgo-texto">Empecemos por lo esencial</p>
                 <h1>¿Qué pasó con tu celular?</h1>
                 <p class="descripcion">Esto nos ayuda a ordenar tu plan. No pediremos acceso al equipo ni a tus cuentas.</p>
@@ -67,7 +94,7 @@
             </form>
 
             <img class="hero-imagen" src="../assets/images/imagen5.jpg"
-                 alt="Describe qué se ve en la imagen" width="600" height="700">
+                 alt="Persona a la que le sacan el celular de la mochila" width="600" height="700">
 
         </div>
     </main>
@@ -83,6 +110,7 @@
         </div>
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/emergencia.js"></script>
 </body>

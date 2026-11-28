@@ -1,24 +1,30 @@
-var radios = document.querySelectorAll('input[name="situacion"]');
-var opciones = document.querySelectorAll(".opcion");
 
-// Marca visualmente la tarjeta elegida
-function marcar() {
-    for (var i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            opciones[i].classList.add("seleccionada");
+$(function() {
+
+    // HU-020: al aceptar el aviso de privacidad se cierra la ventana
+    $("#boton-continuar").click(function() {
+        $("#modal-aviso").addClass("oculto");
+    });
+
+    // Marca visualmente la tarjeta elegida 
+    function marcar() {
+        $(".opcion").removeClass("seleccionada");
+        if ($("input[name='situacion']:checked").val() === "robo") {
+            $(".opcion").first().addClass("seleccionada");
         } else {
-            opciones[i].classList.remove("seleccionada");
+            $(".opcion").last().addClass("seleccionada");
         }
     }
-}
 
-for (var i = 0; i < radios.length; i++) {
-    radios[i].addEventListener("change", marcar);
-}
-marcar();
+    $("input[name='situacion']").change(function() {
+        marcar();
+    });
+    marcar();
 
-
-document.getElementById("form-emergencia").addEventListener("submit", function (e) {
-    e.preventDefault();
-    planificacion();
+    // Ver mi plan: pasa al plan la opción elegida 
+    $("#form-emergencia").submit(function(event) {
+        event.preventDefault();
+        var situacion = $("input[name='situacion']:checked").val();
+        window.location.href = "plan.html#" + situacion;
+    });
 });

@@ -1,51 +1,22 @@
-function emergencia(){
-    window.location.href = "pages/emergencia.html";
-}
-function volver(){
-    window.location.href="../index.html";
-}
-function planificacion(){
-    window.location.href="plan.html";
-}
-function info(){
-    window.location.href="informacion.html";
-}
 
+// El código se ejecuta cuando el árbol DOM está cargado
+$(function() {
 
-var preguntas = document.querySelectorAll(".faq details");
-for (var i = 0; i < preguntas.length; i++) {
-    preguntas[i].addEventListener("toggle", function () {
-        if (!this.open) { return; }
-        for (var k = 0; k < preguntas.length; k++) {
-            if (preguntas[k] !== this) { preguntas[k].open = false; }
+    // Menú de hamburguesa: al hacer click se agrega o quita
+    // la clase "abierto" y el CSS muestra u oculta el menú.
+    $("#boton-menu").click(function() {
+        $("#navegacion").toggleClass("abierto");
+
+        if ($("#navegacion").is(".abierto")) {
+            $("#boton-menu").attr("aria-expanded", "true");
+        } else {
+            $("#boton-menu").attr("aria-expanded", "false");
         }
     });
-}
-var botonMenu = document.getElementById("boton-menu");
-var navegacion = document.getElementById("navegacion");
 
-function cerrarMenu() {
-    navegacion.classList.remove("abierto");
-    botonMenu.setAttribute("aria-expanded", "false");
-}
-
-if (botonMenu && navegacion) {
-    botonMenu.addEventListener("click", function () {
-        var abierto = navegacion.classList.toggle("abierto");
-        botonMenu.setAttribute("aria-expanded", String(abierto));
+    // Al elegir una opción del menú, el menú se cierra
+    $("#navegacion a").click(function() {
+        $("#navegacion").removeClass("abierto");
+        $("#boton-menu").attr("aria-expanded", "false");
     });
-
-    // Al elegir un enlace, el menú se cierra
-    var enlacesMenu = navegacion.querySelectorAll("a");
-    for (var i = 0; i < enlacesMenu.length; i++) {
-        enlacesMenu[i].addEventListener("click", cerrarMenu);
-    }
-
-    
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && navegacion.classList.contains("abierto")) {
-            cerrarMenu();
-            botonMenu.focus();
-        }
-    });
-}
+});
